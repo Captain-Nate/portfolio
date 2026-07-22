@@ -47,7 +47,6 @@ function preprocessGame(html) {
 const GAMES = {
   swing:    D + '/1moreswing_ios/www/index.html',
   neondrop: D + '/neondrop/www/index.html',
-  sheen:    path.join(DIR, 'bubble.html'),
 };
 const games = {};
 for (const [slug, src] of Object.entries(GAMES)) {
@@ -67,7 +66,7 @@ const shots = { pupwalk: PUPWALK_SHOTS.map(s => pngDataUrl(s, 560)) };
 const videos = {};
 const CLIPS = path.join(DIR, 'clips');
 if (fs.existsSync(CLIPS)) {
-  for (const app of ['ember', 'subtrack', 'pupwalk']) {
+  for (const app of ['ember', 'subtrack', 'sheen', 'pupwalk']) {
     const mp4 = path.join(CLIPS, app + '.mp4');
     if (fs.existsSync(mp4)) videos[app] = 'data:video/mp4;base64,' + fs.readFileSync(mp4).toString('base64');
   }
