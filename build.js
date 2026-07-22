@@ -17,6 +17,7 @@ const ICONS = {
   ember:    D + '/ember/assets/images/icon-ember.png',
   subtrack: D + '/subtrack/assets/images/icon.png',
   pupwalk:  D + '/pupwalk/PupWalk/Assets.xcassets/AppIcon.appiconset/AppIcon1024.png',
+  sheen:    D + '/sheen-godot/icon_1024.png',
 };
 function pngDataUrl(src, w) {
   const out = path.join(TMP, path.basename(src) + '.' + w + '.png');
@@ -28,14 +29,6 @@ for (const [slug, src] of Object.entries(ICONS)) {
   if (!fs.existsSync(src)) throw new Error('missing icon: ' + src);
   iconCss += `  --i-${slug}:url("${pngDataUrl(src, 384)}");\n`;
 }
-// Bubble Blocker has no repo icon yet — generate one matching its Neon theme
-const bubbleSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">' +
-  '<rect width="100" height="100" rx="23" fill="#0a0b16"/>' +
-  '<circle cx="35" cy="38" r="16" fill="#00f0ff"/><circle cx="66" cy="34" r="12" fill="#ff3ec8"/>' +
-  '<circle cx="52" cy="64" r="14" fill="#b6ff3c"/>' +
-  '<circle cx="30" cy="33" r="4" fill="#fff" opacity=".8"/><circle cx="62" cy="30" r="3" fill="#fff" opacity=".8"/>' +
-  '<circle cx="48" cy="59" r="3.5" fill="#fff" opacity=".8"/></svg>';
-iconCss += `  --i-bubble:url("data:image/svg+xml,${encodeURIComponent(bubbleSvg)}");\n`;
 iconCss += '}';
 
 /* ---------- 2. Playable web games -> base64(UTF-8 HTML) ---------- */
@@ -54,7 +47,7 @@ function preprocessGame(html) {
 const GAMES = {
   swing:    D + '/1moreswing_ios/www/index.html',
   neondrop: D + '/neondrop/www/index.html',
-  bubble:   path.join(DIR, 'bubble.html'),
+  sheen:    path.join(DIR, 'bubble.html'),
 };
 const games = {};
 for (const [slug, src] of Object.entries(GAMES)) {

@@ -6,7 +6,7 @@ Source for the resume/portfolio artifact:
 ## Files
 - `resume.template.html` — the page (placeholders for icons + media)
 - `build.js` — embeds app icons, the three playable games, PupWalk screenshots, and any clips → writes `resume.html`
-- `bubble.html` — the Bubble Blocker prototype source (also the pickup point for improving the game)
+- `bubble.html` — Sheen's original web prototype (embedded as the playable demo; the shipping game is Godot at ~/Desktop/sheen-godot)
 - `clips/` — drop native-app screen recordings here (see below)
 
 ## Rebuild & publish

@@ -219,6 +219,7 @@
     </div>
     <div class="shelf" id="shelf" aria-label="App icons">
       <a href="#app-swing"    style="--i:var(--i-swing);--c:#4EA1FF"    aria-label="1 More Swing — jump to details"></a>
+      <a href="#app-sheen"    style="--i:var(--i-sheen);--c:#00E5FF"    aria-label="Sheen — jump to details"></a>
       <a href="#app-neondrop" style="--i:var(--i-neondrop);--c:#FF4FD8" aria-label="Neon Drop — jump to details"></a>
       <a href="#app-pupwalk"  style="--i:var(--i-pupwalk);--c:#F6C049"  aria-label="PupWalk — jump to details"></a>
       <a href="#app-ember"    style="--i:var(--i-ember);--c:#FF7A3C"    aria-label="Ember — jump to details"></a>
@@ -272,7 +273,32 @@
         </article>
 
         <!-- Neon Drop (playable) -->
-        <article class="app-row reverse" id="app-neondrop" style="--accent-app:#FF4FD8;--i:var(--i-neondrop)" data-reveal>
+        <article class="app-row reverse" id="app-sheen" style="--accent-app:#00E5FF;--i:var(--i-sheen)" data-reveal>
+          <div class="app-phone">
+            <div class="phone" data-app="sheen" data-kind="game" data-nw="404">
+              <div class="phone-screen">
+                <button class="play-cover" type="button" aria-label="Play Sheen">
+                  <span class="pc-icon" aria-hidden="true"></span><span class="pc-btn">▶ Play</span><span class="pc-hint">Web prototype · tap to play</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="app-info">
+            <div class="titleline"><h3>Sheen</h3><span class="badge badge-play">▶ Playable</span></div>
+            <div class="meta"><span class="cat">Puzzle game · bubble shooter</span><span class="status"><i class="dot dev"></i>Playable on device</span></div>
+            <p class="lede">A bubble shooter with two ways to play — twenty handcrafted picture levels to clear shot-by-shot, and an endless mode where the ceiling keeps descending.</p>
+            <ul class="feats">
+              <li>Hex-grid matching: flood-fill pops plus an anchor pass that drops severed clusters</li>
+              <li>Twelve themes and four bubble finishes, bought with coins earned from play or unlocked outright</li>
+              <li>Level mode is pure skill — pick every bubble colour you fire, so a loss is never bad luck</li>
+            </ul>
+            <p class="standout"><span class="k">Under the hood</span> Every palette is verified for colour-blindness before it ships: a solver simulates deuteranopia and protanopia, then maximises the worst-case perceptual distance between any two bubbles — one theme had greens a twentieth of the required separation apart, unplayable for roughly one man in twenty. The twenty levels are rasterised from real geometry rather than hand-placed, and a keystone detector rejects any board a single lucky shot could collapse.</p>
+            <div class="tags"><span>Godot 4 · GDScript</span><span>HTML5 Canvas</span><span>Colour-science tooling</span><span>Headless test harness</span></div>
+            <div class="app-foot"><span class="platforms">iOS · Web</span></div>
+          </div>
+        </article>
+
+        <article class="app-row" id="app-neondrop" style="--accent-app:#FF4FD8;--i:var(--i-neondrop)" data-reveal>
           <div class="app-phone">
             <div class="phone" data-app="neondrop" data-kind="game" data-nw="500">
               <div class="phone-screen">
@@ -298,31 +324,6 @@
           </div>
         </article>
 
-        <!-- Bubble Blocker (playable prototype) -->
-        <article class="app-row" id="app-bubble" style="--accent-app:#00E5FF;--i:var(--i-bubble)" data-reveal>
-          <div class="app-phone">
-            <div class="phone" data-app="bubble" data-kind="game" data-nw="404">
-              <div class="phone-screen">
-                <button class="play-cover" type="button" aria-label="Play Bubble Blocker">
-                  <span class="pc-icon" aria-hidden="true"></span><span class="pc-btn">▶ Play</span><span class="pc-hint">Prototype · tap to play</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="app-info">
-            <div class="titleline"><h3>Bubble Blocker</h3><span class="badge badge-play">▶ Playable</span></div>
-            <div class="meta"><span class="cat">Puzzle game · bubble shooter</span><span class="status"><i class="dot proto"></i>Prototype · in design</span></div>
-            <p class="lede">A classic bubble shooter — drag to aim, bounce off the walls, match three to pop, and sever whole clusters to send them tumbling.</p>
-            <ul class="feats">
-              <li>Hex-grid matching: flood-fill pops plus an anchor pass that drops severed clusters</li>
-              <li>Predictive aim line that traces wall bounces before you shoot</li>
-              <li>Three visual themes — Neon, Matte, Clear — restyled live, with mock purchases wired for real IAP</li>
-            </ul>
-            <p class="standout"><span class="k">Under the hood</span> A dependency-free canvas prototype built to lock the feel first, then rebuilt in Godot once the mechanics were proven — the matching engine ported line for line and verified against the same headless tests, now running on device and exporting to both iOS and the web from one project.</p>
-            <div class="tags"><span>Godot 4 · GDScript</span><span>HTML5 Canvas</span><span>JavaScript</span><span>Headless test harness</span></div>
-            <div class="app-foot"><span class="platforms">Prototype · iOS · Web</span></div>
-          </div>
-        </article>
 
       </div>
 
