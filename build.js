@@ -79,8 +79,36 @@ if (!html.includes('/*__APP_ICONS__*/')) throw new Error('icon placeholder missi
 if (!html.includes('/*__MEDIA_PLACEHOLDER__*/{}')) throw new Error('media placeholder missing');
 html = html.replace('/*__APP_ICONS__*/', iconCss)
            .replace('/*__MEDIA_PLACEHOLDER__*/{}', MEDIA);
+// resume.html = artifact format (the Artifact tool injects its own <head> skeleton).
 const dest = path.join(DIR, 'resume.html');
 fs.writeFileSync(dest, html);
+
+// index.html = standalone document for GitHub Pages, which serves the raw file.
+// Needs its own doctype + charset + viewport (mobile) + social meta, which the
+// artifact host would otherwise supply. Split the template head (through </style>)
+// from the body so the meta lands in a real <head>.
+const SITE = 'https://captain-nate.github.io/portfolio/';
+const DESC = 'App & game developer. Six shipped games and apps across iOS and the web — built end to end with Capacitor, Unity, Godot, SwiftUI and React Native.';
+const splitAt = html.indexOf('</style>') + '</style>'.length;
+const headPart = html.slice(0, splitAt);
+const bodyPart = html.slice(splitAt);
+const meta = [
+  '<!doctype html>',
+  '<html lang="en">',
+  '<head>',
+  '<meta charset="utf-8">',
+  '<meta name="viewport" content="width=device-width, initial-scale=1">',
+  `<meta name="description" content="${DESC}">`,
+  '<link rel="canonical" href="' + SITE + '">',
+  '<meta property="og:type" content="website">',
+  '<meta property="og:title" content="Nate Mason — App &amp; Game Developer">',
+  `<meta property="og:description" content="${DESC}">`,
+  '<meta property="og:url" content="' + SITE + '">',
+  '<meta property="og:image" content="' + SITE + 'apple-touch-icon.png">',
+  '<meta name="twitter:card" content="summary">',
+].join('\n');
+const indexHtml = meta + '\n' + headPart + '\n</head>\n<body>\n' + bodyPart + '\n</body>\n</html>\n';
+fs.writeFileSync(path.join(DIR, 'index.html'), indexHtml);
 
 console.log('games:   ' + Object.keys(games).map(k => k + ' ' + (games[k].length / 1024).toFixed(0) + 'KB').join(', '));
 console.log('shots:   pupwalk x' + shots.pupwalk.length);
